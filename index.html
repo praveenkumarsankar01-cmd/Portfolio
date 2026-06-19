@@ -89,10 +89,10 @@ body{font-family:'Outfit',sans-serif;background:var(--bg0);color:var(--t2);overf
   overflow:hidden;
 }
 @media(max-width:1024px) and (min-width:769px){
-  .hero{min-height:auto;padding-bottom:140px}
-  .hero-wrap{padding:2rem 1.5rem 2rem}
+  .hero{min-height:auto;padding-bottom:140px;flex-wrap:wrap}
+  .hero-wrap{padding:2rem 1.5rem 2rem;width:100%}
   .section{padding:4rem 0}
-  .stats-bar{position:relative;margin-top:0}
+  .stats-bar{position:relative;margin-top:0;width:100%}
 }
 .hero-bg{display:none}
 #pCanvas{display:none}
@@ -101,6 +101,25 @@ body{font-family:'Outfit',sans-serif;background:var(--bg0);color:var(--t2);overf
   width:100%;max-width:1200px;margin:0 auto;padding:3rem 2rem 7rem;
   display:grid;grid-template-columns:55% 45%;align-items:center;gap:2rem;
   position:relative;z-index:1;
+}
+@media(min-width:481px){
+  .hero-wrap{grid-template-columns:55% 45% !important;gap:1rem !important;padding:2rem 1rem 6rem !important}
+  .h-visual{display:flex !important;height:280px !important}
+  .photo-wrap{width:220px !important;height:220px !important}
+  .h-content{text-align:left !important}
+  .h-ctas,.h-socials,.h-skills{justify-content:flex-start !important}
+  .h-desc{margin:0 0 1.25rem !important}
+  .h-title{font-size:1.4rem !important}
+  .deco{width:48px !important;height:48px !important}
+  .deco i{font-size:1rem !important}
+}
+@media(min-width:769px){
+  .h-title{font-size:clamp(2rem,3.8vw,3.4rem) !important}
+  .h-visual{height:520px !important}
+  .photo-wrap{width:420px !important;height:420px !important}
+  .deco{width:72px !important;height:72px !important}
+  .deco i{font-size:1.6rem !important}
+  .hero-wrap{padding:3rem 2rem 7rem !important;gap:2rem !important}
 }
 .h-badge{
   display:inline-flex;align-items:center;gap:.55rem;
@@ -503,7 +522,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
 /* RESPONSIVE */
 @media(max-width:1100px){.tl-grid{grid-template-columns:repeat(4,1fr)}.ct-grid{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:repeat(2,1fr);gap:1.8rem}.service-card{height:420px;border-radius:28px}}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:2.75rem}.stats-inner{grid-template-columns:1fr;gap:1rem}.stat-cell+.stat-cell{border-left:none;border-top:1px solid var(--glass-b)}.stat-cell{padding:1rem 0}.sk-grid{grid-template-columns:1fr}.ct-wrap{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr;gap:2.25rem}.tm-grid{grid-template-columns:repeat(2,1fr)}.services-title{font-size:2.2rem}}
-@media(max-width:600px){.hero-wrap{grid-template-columns:1fr;gap:2.75rem}.h-visual{height:380px}.photo-wrap{width:320px;height:320px}.h-content{text-align:center}.h-ctas,.h-socials,.h-skills{justify-content:center}.h-desc{margin:0 auto 1.75rem}}
+@media(max-width:480px){.hero-wrap{grid-template-columns:1fr;gap:2.75rem}.h-visual{height:380px}.photo-wrap{width:320px;height:320px}.h-content{text-align:center !important}.h-ctas,.h-socials,.h-skills{justify-content:center !important}.h-desc{margin:0 auto 1.75rem !important}}
 @media(max-width:600px){.h-visual{height:320px}.photo-wrap{width:270px;height:270px}.deco{width:58px;height:58px}.deco i{font-size:1.3rem}.stats-inner{grid-template-columns:repeat(3,1fr)}.stat-cell+.stat-cell{border-left:1px solid var(--glass-b);border-top:none}.stat-cell{padding:0 .6rem}.stat-ic-box{width:40px;height:40px;font-size:1.1rem}.stat-val{font-size:1.3rem}}
 @media(max-width:768px){.nav-links{display:none}.btn-hire{display:none}.ham{display:flex}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--nav-bg);backdrop-filter:blur(24px);align-items:center;justify-content:center;gap:2.25rem;z-index:999}.nav-links.open a{font-size:1.45rem;font-weight:700;color:var(--t2)}.section{padding:4.5rem 0}.pj-grid{grid-template-columns:1fr}.tl-grid{grid-template-columns:repeat(3,1fr)}.ct-grid,.tm-grid{grid-template-columns:1fr 1fr}.ab-hi{grid-template-columns:1fr}.f-row{grid-template-columns:1fr}.ft-bot{flex-direction:column;gap:.4rem;text-align:center}.ft-links{grid-template-columns:1fr 1fr;gap:1.25rem}.tl::before{left:14px}.tl-item{gap:1.35rem}.tl-dot{width:30px;height:30px;font-size:.8rem}.services-grid{grid-template-columns:1fr;gap:1.5rem}.service-card{height:380px;border-radius:24px}.service-content{padding:1.5rem}.service-title{font-size:1.4rem}.service-desc{font-size:.9rem}}
 @media(max-width:480px){.tl-grid{grid-template-columns:repeat(2,1fr)}.ct-grid,.tm-grid{grid-template-columns:1fr}.ft-links{grid-template-columns:1fr}.h-title{font-size:2.3rem}.sec-title{font-size:1.8rem}.service-card{height:320px;border-radius:20px}.service-content{padding:1.2rem}.service-title{font-size:1.15rem}.service-desc{font-size:.8rem}.service-number{font-size:1rem;top:1rem;left:1rem}.service-badge{top:1rem;right:1rem;padding:.4rem .9rem;font-size:.65rem}.service-btn{padding:.55rem 1.4rem;font-size:.75rem}}
@@ -511,12 +530,12 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
 /* ── DESKTOP-MODE ON MOBILE (Chrome Request Desktop Site) ── */
 @media(min-width:769px) and (max-width:1100px){
   .hero{min-height:auto}
-  .hero-wrap{padding:2.5rem 1.5rem 2rem;grid-template-columns:1fr;gap:2rem}
+  .hero-wrap{padding:2.5rem 1.5rem 2rem;grid-template-columns:50% 50%;gap:1.5rem}
   .h-visual{height:320px}
   .photo-wrap{width:260px;height:260px}
-  .h-content{text-align:center}
-  .h-ctas,.h-socials,.h-skills{justify-content:center}
-  .h-desc{margin:0 auto 1.5rem}
+  .h-content{text-align:left}
+  .h-ctas,.h-socials,.h-skills{justify-content:flex-start}
+  .h-desc{margin:0 0 1.5rem}
   .stats-bar{position:relative}
   .stats-inner{padding:0 1rem}
   .tm-grid{grid-template-columns:repeat(2,1fr)}
@@ -1431,7 +1450,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
     <div class="pj-grid">
       <div class="pj-card rv" data-d="0">
         <div class="pj-img"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&auto=format&q=70" alt="Business Website Creation" loading="lazy" decoding="async"><div class="pj-ov"></div><div class="pj-tags"><span class="pj-tag">DESIGN</span><span class="pj-tag">DEV</span></div></div>
-        <div class="pj-body"><h3 class="pj-title">Business Website Creation</h3><p class="pj-desc">Built websites for local businesses that needed more than just an online presence — they needed something that actually made visitors trust them and take action. Fast load times, mobile-friendly, and ready to rank on Google from day one.</p><div class="pj-meta"><span class="pj-tech"><i class="fas fa-code"></i>Development</span><span class="pj-tech"><i class="fas fa-mobile-alt"></i>Responsive</span></div><div class="pj-acts"><button class="pj-btn pri" onclick="openProjectShowcase()"><i class="fas fa-arrow-right"></i>View Project</button><button class="pj-btn sec" onclick="window.open('https://vynox-menswear.vercel.app/','_blank')"><i class="fas fa-globe"></i>Live Site</button></div></div>
+        <div class="pj-body"><h3 class="pj-title">Business Website Creation</h3><p class="pj-desc">Built websites for local businesses that needed more than just an online presence — they needed something that actually made visitors trust them and take action. Fast load times, mobile-friendly, and ready to rank on Google from day one.</p><div class="pj-meta"><span class="pj-tech"><i class="fas fa-code"></i>Development</span><span class="pj-tech"><i class="fas fa-mobile-alt"></i>Responsive</span></div><div class="pj-acts"><button class="pj-btn pri" onclick="openProjectShowcase()"><i class="fas fa-arrow-right"></i>View Project</button><button class="pj-btn sec" onclick="window.open('https://mens-wear-website.vercel.app/','_blank')"><i class="fas fa-globe"></i>Live Site</button></div></div>
       </div>
       <div class="pj-card rv" data-d="100">
         <div class="pj-img"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop&auto=format&q=70" alt="Paid Advertising Mastery" loading="lazy" decoding="async"><div class="pj-ov"></div><div class="pj-tags"><span class="pj-tag">Google Ads</span><span class="pj-tag">Meta Ads</span></div></div>
