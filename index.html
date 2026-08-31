@@ -1113,6 +1113,12 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
   .tl-name{font-size:.66rem !important;line-height:1.25 !important}
   .tl-tgs{display:none !important}
 
+  /* footer: three link columns were stacking into one long list */
+  .ft-links{grid-template-columns:1fr 1fr !important;gap:1.4rem 1rem !important}
+  .ft-col h4{font-size:.78rem !important;margin-bottom:.6rem !important}
+  .ft-col a{font-size:.85rem !important}
+  .ft-top{gap:1.9rem !important;padding:2.6rem 0 1.8rem !important}
+  .ft-brand p{font-size:.88rem !important}
   .sk-grid{grid-template-columns:repeat(2,1fr) !important;gap:.55rem !important}
   .section{padding:2.6rem 0 !important}
   .sec-title{font-size:1.6rem !important}
@@ -1784,7 +1790,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
       </div>
     </div>
     <div class="ft-div"></div>
-    <div class="ft-bot"><p>© 2025 Praveen Kumar. All rights reserved.</p><p>Built in Chennai, India <span class="heart">❤</span></p></div>
+    <div class="ft-bot"><p>&copy; <span id="ftYear">2026</span> Praveen Kumar. All rights reserved.</p><p>Built in Chennai, India <span class="heart">❤</span></p></div>
   </div>
 </footer>
 
@@ -3093,6 +3099,9 @@ function closeCertModal(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCertModal();});
 
+
+/* keep the footer year current without an edit each January */
+(function(){var y=document.getElementById('ftYear');if(y)y.textContent=new Date().getFullYear();})();
 </script>
 </body>
 </html>
