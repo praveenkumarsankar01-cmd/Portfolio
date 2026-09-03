@@ -506,10 +506,13 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
 .rv{opacity:0;transform:translateY(36px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
 .rv.vis{opacity:1;transform:translateY(0)}
 .rv[data-d="50"]{transition-delay:.05s}.rv[data-d="100"]{transition-delay:.1s}.rv[data-d="150"]{transition-delay:.15s}.rv[data-d="200"]{transition-delay:.2s}.rv[data-d="250"]{transition-delay:.25s}.rv[data-d="300"]{transition-delay:.3s}
-.rv-l{opacity:0;transform:translateX(-45px);animation:rvL .85s var(--ease) 1.5s forwards}
-.rv-r{opacity:0;transform:translateX(45px);animation:rvR .85s var(--ease) 1.7s forwards}
-@keyframes rvL{to{opacity:1;transform:translateX(0)}}
-@keyframes rvR{to{opacity:1;transform:translateX(0)}}
+/* Hero text and portrait render in place, with no entrance animation.
+   They previously started at opacity:0 behind a 1.5s / 1.7s delay, so
+   the hero was blank for the first 1.7s and the portrait was not fully
+   on screen until 2.55s — which read as a slow page rather than as an
+   entrance. The rvL/rvR keyframes went with it; nothing else used them.
+   .rv-l and .rv-r are applied only to .h-content and .h-visual. */
+.rv-l,.rv-r{opacity:1;transform:none;animation:none}
 
 /* RESPONSIVE */
 @media(max-width:1100px){.tl-grid{grid-template-columns:repeat(4,1fr)}.ct-grid{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:repeat(2,1fr);gap:1.8rem}.service-card{height:420px;border-radius:28px}}
@@ -1313,7 +1316,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
 
         <!-- Photo circle -->
         <div class="photo-circle">
-          <img fetchpriority="high" decoding="async" src="assets/portrait.webp" alt="Praveen Kumar">
+          <img fetchpriority="high" decoding="async" src="assets/portrait.jpg" alt="Praveen Kumar">
         </div>
       </div>
     </div>
@@ -1494,7 +1497,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
           <i class="fas fa-search"></i>
           <span>Google Ads</span>
           <div class="ct-ov">
-            <button class="ct-btn" onclick="openCertModal('assets/cert-1.webp')"><i class="fas fa-eye"></i> View Certificate</button>
+            <button class="ct-btn" onclick="openCertModal('assets/cert-1.jpg')"><i class="fas fa-eye"></i> View Certificate</button>
           </div>
         </div>
         <div class="ct-info">
@@ -1510,7 +1513,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
           <i class="fas fa-desktop"></i>
           <span>Google Ads</span>
           <div class="ct-ov">
-            <button class="ct-btn" onclick="openCertModal('assets/cert-2.webp')"><i class="fas fa-eye"></i> View Certificate</button>
+            <button class="ct-btn" onclick="openCertModal('assets/cert-2.jpg')"><i class="fas fa-eye"></i> View Certificate</button>
           </div>
         </div>
         <div class="ct-info">
@@ -1526,7 +1529,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
           <i class="fas fa-chart-bar"></i>
           <span>Google Analytics</span>
           <div class="ct-ov">
-            <button class="ct-btn" onclick="openCertModal('assets/cert-3.webp')"><i class="fas fa-eye"></i> View Certificate</button>
+            <button class="ct-btn" onclick="openCertModal('assets/cert-3.jpg')"><i class="fas fa-eye"></i> View Certificate</button>
           </div>
         </div>
         <div class="ct-info">
@@ -1542,7 +1545,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
           <i class="fas fa-graduation-cap"></i>
           <span>HubSpot Academy</span>
           <div class="ct-ov">
-            <button class="ct-btn" onclick="openCertModal('assets/cert-4.webp')"><i class="fas fa-eye"></i> View Certificate</button>
+            <button class="ct-btn" onclick="openCertModal('assets/cert-4.jpg')"><i class="fas fa-eye"></i> View Certificate</button>
           </div>
         </div>
         <div class="ct-info">
@@ -1563,7 +1566,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
           <i class="fas fa-robot"></i>
           <span>Semrush Academy</span>
           <div class="ct-ov">
-            <button class="ct-btn" onclick="openCertModal('assets/cert-5.webp')"><i class="fas fa-eye"></i> View Certificate</button>
+            <button class="ct-btn" onclick="openCertModal('assets/cert-5.jpg')"><i class="fas fa-eye"></i> View Certificate</button>
           </div>
         </div>
         <div class="ct-info">
@@ -1579,7 +1582,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
           <i class="fas fa-award"></i>
           <span>Brand Monk Academy</span>
           <div class="ct-ov">
-            <button class="ct-btn" onclick="openCertModal('assets/cert-6.webp')"><i class="fas fa-eye"></i> View Certificate</button>
+            <button class="ct-btn" onclick="openCertModal('assets/cert-6.jpg')"><i class="fas fa-eye"></i> View Certificate</button>
           </div>
         </div>
         <div class="ct-info">
@@ -1620,7 +1623,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
         <div class="pj-body"><h3 class="pj-title">SEO for Local & E-Commerce Businesses</h3><p class="pj-desc">Handled SEO for three live client websites — fixing technical issues, improving on-page content, and building the kind of search visibility that brings in enquiries without spending on ads every month. Results take time, but they stick.</p><div class="pj-meta"><span class="pj-tech"><i class="fas fa-chart-line"></i>SEO</span><span class="pj-tech"><i class="fas fa-search"></i>On-Page</span><span class="pj-tech"><i class="fas fa-cog"></i>Technical</span></div><div class="pj-acts"><button class="pj-btn pri" onclick="openSeoShowcase()"><i class="fas fa-arrow-right"></i>View Project</button><button class="pj-btn sec"><i class="fas fa-file-alt"></i>Case Study</button></div></div>
       </div>
       <div class="pj-card rv" data-d="0">
-        <div class="pj-img"><img src="assets/project.webp" alt="Social Media &amp; Poster Design" loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:100%;border-radius:inherit"><div class="pj-ov"></div><div class="pj-tags"><span class="pj-tag">Poster Design</span><span class="pj-tag">Branding</span><span class="pj-tag">Social Media</span></div></div>
+        <div class="pj-img"><img src="assets/project.png" alt="Social Media &amp; Poster Design" loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:100%;border-radius:inherit"><div class="pj-ov"></div><div class="pj-tags"><span class="pj-tag">Poster Design</span><span class="pj-tag">Branding</span><span class="pj-tag">Social Media</span></div></div>
         <div class="pj-body"><h3 class="pj-title">Social Media &amp; Poster Design</h3><p class="pj-desc">Created posters, promotional graphics, and social media content for several local businesses. The goal was simple: make them look professional and consistent online, so when someone checks their Instagram or WhatsApp status, they actually take the business seriously.</p><div class="pj-meta"><span class="pj-tech"><i class="fas fa-paint-brush"></i>Design</span><span class="pj-tech"><i class="fas fa-pencil-ruler"></i>Branding</span></div><div class="pj-acts"><button class="pj-btn pri" onclick="openDesignShowcase()"><i class="fas fa-arrow-right"></i>View Project</button><button class="pj-btn sec" onclick="openDesignShowcase()"><i class="fas fa-images"></i>View Designs</button></div></div>
       </div>
     </div>
@@ -1671,7 +1674,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
       <!-- Praveen (Owner) -->
       <div class="tm-card glass-card rv" data-d="0">
         <div class="tm-glow" style="--tm-c:#3b82f6"></div>
-        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#171922,#3b82f6)"><img decoding="async" loading="lazy" src="assets/portrait.webp" alt="Praveen Kumar"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#171922,#3b82f6)"></div></div>
+        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#171922,#3b82f6)"><img decoding="async" loading="lazy" src="assets/portrait.jpg" alt="Praveen Kumar"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#171922,#3b82f6)"></div></div>
         <div class="tm-badge" style="background:linear-gradient(135deg,#171922,#3b82f6)">Digital Marketer</div>
         <h3>Praveen Kumar</h3>
         <p>Digital marketing specialist helping small businesses grow online through SEO, paid ads, and high-converting websites.</p>
@@ -1681,7 +1684,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
       <!-- Abishek (coat suit) -->
       <div class="tm-card glass-card rv" data-d="100">
         <div class="tm-glow" style="--tm-c:#60a5fa"></div>
-        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#60a5fa,#3f4250)"><img decoding="async" loading="lazy" src="assets/team-1.webp" alt="Abishek"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#60a5fa,#3f4250)"></div></div>
+        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#60a5fa,#3f4250)"><img decoding="async" loading="lazy" src="assets/team-1.png" alt="Abishek"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#60a5fa,#3f4250)"></div></div>
         <div class="tm-badge" style="background:linear-gradient(135deg,#6366f1,#3f4250)">Web Designer</div>
         <h3>Abishek P</h3>
         <p>Handles web design and frontend work with a sharp eye for clean, functional layouts that look good on every screen.</p>
@@ -1691,7 +1694,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
       <!-- Ganesh (checked shirt) -->
       <div class="tm-card glass-card rv" data-d="200">
         <div class="tm-glow" style="--tm-c:#1d4ed8"></div>
-        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#3b82f6,#1d4ed8)"><img decoding="async" loading="lazy" src="assets/team-2.webp" alt="Ganesh"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#3b82f6,#1d4ed8)"></div></div>
+        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#3b82f6,#1d4ed8)"><img decoding="async" loading="lazy" src="assets/team-2.jpg" alt="Ganesh"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#3b82f6,#1d4ed8)"></div></div>
         <div class="tm-badge" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">Poster Creator</div>
         <h3>Ganesh</h3>
         <p>Creates graphics, posters, and brand visuals that are clear, consistent, and actually represent the business well.</p>
@@ -1701,7 +1704,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
       <!-- Balamurugan (sandal shirt) -->
       <div class="tm-card glass-card rv" data-d="300">
         <div class="tm-glow" style="--tm-c:#10b981"></div>
-        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#10b981,#059669)"><img decoding="async" loading="lazy" src="assets/team-3.webp" alt="Balamurugan"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#10b981,#059669)"></div></div>
+        <div class="tm-av"><div class="tm-av-in" style="--tm-g:linear-gradient(135deg,#10b981,#059669)"><img decoding="async" loading="lazy" src="assets/team-3.png" alt="Balamurugan"></div><div class="tm-av-ring" style="--tm-g:linear-gradient(135deg,#10b981,#059669)"></div></div>
         <div class="tm-badge" style="background:linear-gradient(135deg,#10b981,#059669)">Data Analyst</div>
         <h3>Bala Murugan</h3>
         <p>Digs into the numbers — tracking what's working, what's not, and what the data actually means for the client's business.</p>
@@ -2559,8 +2562,8 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
 
       <!-- Hero -->
       <div class="pp-hero paid-ads-hero">
-        <div class="pp-hero-bg" style="background-image:url('assets/herobg.webp')"></div>
-        <img decoding="async" loading="lazy" src="assets/misc.webp" class="hero-bg-image" alt="Purple Gradient Background">
+        <div class="pp-hero-bg" style="background-image:url('assets/herobg.png')"></div>
+        <img decoding="async" loading="lazy" src="assets/misc.png" class="hero-bg-image" alt="Purple Gradient Background">
         <div class="bg-overlay"></div>
         <div class="pp-hero-overlay"></div>
         <div class="pp-hero-content">
@@ -2597,7 +2600,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
               <h3 class="pds-title">Sniper – Meta Ads Dashboard</h3>
             </div>
             <div class="pds-img-wrap">
-              <img decoding="async" loading="lazy" src="assets/design-1.webp" alt="Sniper Meta Ads Dashboard" class="pds-img">
+              <img decoding="async" loading="lazy" src="assets/design-1.jpg" alt="Sniper Meta Ads Dashboard" class="pds-img">
             </div>
             <p class="pds-desc">Managed and optimized Meta advertising campaigns focused on audience targeting, retargeting strategies, conversion optimization, and ROAS improvement. Campaign structures were designed to improve engagement, website purchases, and customer retention across multiple audience segments.</p>
             <div class="pds-metrics">
@@ -2615,7 +2618,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
               <h3 class="pds-title">Sniper – Google Ads Dashboard</h3>
             </div>
             <div class="pds-img-wrap">
-              <img decoding="async" loading="lazy" src="assets/design-2.webp" alt="Sniper Google Ads Dashboard" class="pds-img">
+              <img decoding="async" loading="lazy" src="assets/design-2.jpg" alt="Sniper Google Ads Dashboard" class="pds-img">
             </div>
             <p class="pds-desc">Executed Google Ads campaigns including Search, Shopping, and Performance Max campaigns focused on conversion growth, keyword optimization, and scalable acquisition strategies. Performance tracking and analytics were used to maximize ROAS and campaign efficiency.</p>
             <div class="pds-metrics">
@@ -2719,7 +2722,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
             </div>
             <div class="pds-title" style="margin-bottom:1rem">Business Promotional Banner Campaign</div>
             <div class="pds-img-wrap">
-              <img decoding="async" loading="lazy" src="assets/project.webp" alt="Business Promotional Banners and Logo Designs" class="pds-img" style="object-fit:contain;background:#f8f9fb">
+              <img decoding="async" loading="lazy" src="assets/project.png" alt="Business Promotional Banners and Logo Designs" class="pds-img" style="object-fit:contain;background:#f8f9fb">
             </div>
             <p class="pds-desc">Created a comprehensive promotional marketing campaign featuring modern banner advertisements for local businesses. Designs include business growth ads, fresh grocery delivery banners, discount offer creatives, and six professional logo identities across various industries — all optimised for social media, WhatsApp marketing, and digital advertising platforms.</p>
             <div class="pds-metrics">
@@ -2795,7 +2798,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
             </div>
             <div class="pds-title" style="margin-bottom:1rem">Product Advertisement Creative Series</div>
             <div class="pds-img-wrap">
-              <img decoding="async" loading="lazy" src="assets/design-3.webp" alt="Product Advertisement Creatives" class="pds-img" style="object-fit:contain;background:#f0ede8">
+              <img decoding="async" loading="lazy" src="assets/design-3.png" alt="Product Advertisement Creatives" class="pds-img" style="object-fit:contain;background:#f0ede8">
             </div>
             <p class="pds-desc">Developed two premium product advertisement creatives targeting different market segments. The skincare ad uses warm earthy tones with clean typography to convey natural trust signals, while the wireless earbuds ad uses a bold dark tech aesthetic with glowing accents to communicate power and modernity — both designed to maximise engagement on Instagram and Meta ad placements.</p>
             <div class="pds-metrics">
@@ -2867,7 +2870,7 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
             </div>
             <div class="pds-title" style="margin-bottom:1rem">Instagram Story Marketing Template Collection</div>
             <div class="pds-img-wrap">
-              <img decoding="async" loading="lazy" src="assets/design-4.webp" alt="Instagram Story Marketing Templates" class="pds-img" style="object-fit:contain;background:#1a1a2e">
+              <img decoding="async" loading="lazy" src="assets/design-4.png" alt="Instagram Story Marketing Templates" class="pds-img" style="object-fit:contain;background:#1a1a2e">
             </div>
             <p class="pds-desc">Designed a diverse collection of mobile-first Instagram story templates spanning eight visual styles and five business niches — New Arrival fashion, Special Offer, Today's Special food promo, Time to Travel, Business Growth, Stay Fit Fitness, New Collection, and Weekend Sale. Each template uses bold typography, high-contrast imagery, and strong CTAs to maximise swipe-up engagement and audience interaction.</p>
             <div class="pds-metrics">
