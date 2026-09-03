@@ -3104,5 +3104,68 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCertModal();});
 /* keep the footer year current without an edit each January */
 (function(){var y=document.getElementById('ftYear');if(y)y.textContent=new Date().getFullYear();})();
 </script>
+<style>
+/* ═══ PHONE HERO — CTA AND SOCIALS BESIDE THE PORTRAIT ═══════════════
+   On a phone the hero used to run badge → title → copy → tags → button
+   → socials → portrait as one tall column, so the portrait sat a full
+   screen below the fold. The button and socials are narrow things; the
+   space to their right was empty.
+
+   Below 600px the wrap becomes a two-column grid. The badge, headline,
+   copy and tags still span the full width; the button and the social row
+   sit in a narrow left column, and the portrait moves up into the space
+   beside them. `display:contents` on .h-content lets its children become
+   grid items of .hero-wrap directly, so no markup changes and the
+   desktop layout is untouched. */
+@media(max-width:600px){
+  .hero-wrap{
+    grid-template-columns:minmax(0,1fr) 40% !important;
+    column-gap:.9rem !important;
+    row-gap:0 !important;
+    align-items:start !important;
+    padding-left:1.25rem !important;
+    padding-right:1.25rem !important;
+  }
+  .h-content{display:contents}
+
+  /* full-width rows, unchanged in look */
+  .h-badge {grid-column:1/-1; grid-row:1; justify-self:center}
+  .h-title {grid-column:1/-1; grid-row:2}
+  .h-desc  {grid-column:1/-1; grid-row:3}
+  .h-skills{grid-column:1/-1; grid-row:4}
+
+  /* left column: button, then the social row under it */
+  .h-ctas{
+    grid-column:1; grid-row:5;
+    justify-content:flex-start !important;
+    margin:0 0 .85rem !important;
+  }
+  .h-ctas .btn-primary{
+    padding:.62rem 1rem !important;
+    font-size:.8rem !important;
+    white-space:nowrap;
+  }
+  .h-socials{
+    grid-column:1; grid-row:6;
+    justify-content:flex-start !important;
+    gap:.38rem !important;
+    align-self:start;
+  }
+  .h-socials .soc-ic{width:34px !important;height:34px !important;font-size:.82rem !important}
+
+  /* right column: the portrait, spanning both rows so it centres against
+     the button-and-socials block */
+  .h-visual{
+    grid-column:2; grid-row:5/7;
+    height:auto !important;
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    align-self:center;
+    margin:0 !important;
+  }
+  .photo-wrap{width:100% !important;max-width:150px !important}
+}
+</style>
 </body>
 </html>
