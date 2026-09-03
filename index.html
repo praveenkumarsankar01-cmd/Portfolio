@@ -1140,6 +1140,78 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
   #about,#services,#tools,#certificates,
   #projects,#experience,#team,#contact{content-visibility:visible}
 }
+
+/* ═══ MOBILE HERO ═══════════════════════════════════════════════
+   Below 600px the CTA and the social icons share a row with the
+   portrait: button on the left, icons under it, photo filling the
+   space on the right. .h-content drops its box (display:contents)
+   so its children become grid items alongside .h-visual — inherited
+   properties such as text-align still pass through, so the badge,
+   headline and description keep the centring they already had. */
+@media(max-width:600px){
+  .hero-wrap{
+    display:grid !important;
+    grid-template-columns:auto 1fr !important;
+    grid-template-areas:
+      "badge   badge"
+      "title   title"
+      "desc    desc"
+      "skills  skills"
+      "cta     photo"
+      "socials photo" !important;
+    column-gap:.9rem !important;
+    row-gap:0 !important;
+  }
+  .h-content{display:contents !important}
+  .h-badge {grid-area:badge}
+  .h-title {grid-area:title}
+  .h-desc  {grid-area:desc}
+  .h-skills{grid-area:skills;margin-bottom:1.15rem !important}
+
+  /* left column — button above the icons, the pair centred against
+     the portrait's height */
+  .h-ctas{
+    grid-area:cta;align-self:end;
+    justify-content:flex-start !important;
+    margin-bottom:.55rem !important;
+  }
+  .h-socials{
+    grid-area:socials;align-self:start;
+    justify-content:flex-start !important;
+    gap:.4rem !important;
+  }
+  .btn-primary{padding:.62rem 1.05rem !important;font-size:.78rem !important}
+  .soc-ic{width:34px !important;height:34px !important;font-size:.82rem !important}
+
+  /* right column — portrait takes the width the button gave up */
+  .h-visual{grid-area:photo;align-self:center;height:auto !important}
+  .photo-wrap{width:100% !important;max-width:200px !important;margin-left:auto}
+
+  /* The stats bar was position:absolute;bottom:0, so .hero-wrap
+     carried 7rem of bottom padding purely to reserve room for it —
+     that reserve, not the content, was the source of the dead space
+     under the portrait. Letting the bar flow removes it, so the
+     padding can shrink to a real gap. .hero goes display:block
+     because a relative bar would otherwise sit beside .hero-wrap as
+     a flex item; the orbs are absolute, so they are unaffected. */
+  .hero{display:block !important;padding-top:4.7rem !important;padding-bottom:0 !important}
+  .hero-wrap{padding:1.35rem 1.25rem 1.5rem !important}
+  .stats-bar{position:relative !important;bottom:auto !important;padding:1.15rem 0 !important}
+}
+
+/* ═══ MOBILE STATS BAR ══════════════════════════════════════════
+   The mobile rules above target .stat-item and .stat-num, but the
+   markup uses .stat-cell and .stat-val — so they never matched and
+   the bar kept its desktop row layout, pushing "Client Rating" off
+   the right edge at 360px. Same intent, correct selectors. */
+@media(max-width:600px){
+  .stats-inner{padding:0 .85rem !important}
+  .stat-cell{
+    flex-direction:column !important;text-align:center !important;
+    gap:.35rem !important;padding:0 .35rem !important;
+  }
+  .stat-val{font-size:1.15rem !important}
+}
 </style>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -1192,8 +1264,8 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
       </div>
 
       <h1 class="h-title">
-        Driving Growth Through
-        <span class="grad-line">Strategy, Creativity &amp; Data</span>
+        Growth Through
+        <span class="grad-line">Strategy &amp; Data</span>
       </h1>
 
       <p class="h-desc">
@@ -1203,10 +1275,10 @@ footer{background:var(--bg1);border-top:1px solid var(--glass-b);position:relati
       </p>
 
       <div class="h-skills">
+        <span class="skill-tag">Website</span>
         <span class="skill-tag">SEO</span>
-        <span class="skill-tag">Google Ads</span>
+        <span class="skill-tag">Ads</span>
         <span class="skill-tag">Social Media</span>
-        <span class="skill-tag">Content Strategy</span>
       </div>
 
       <div class="h-ctas">
